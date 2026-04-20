@@ -49,7 +49,7 @@ export const heroProofs = [
 export const programs = [
   {
     title: 'Math Boost',
-    description: 'Small-group support for number sense, problem solving, and confident homework habits.',
+    description: 'Small-group support that strengthens number sense, problem solving, and homework confidence.',
     highlights: ['Number sense and fluency', 'Homework help and practice'],
     image:
       'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80',

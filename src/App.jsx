@@ -387,9 +387,9 @@ function HomePage() {
     <div>
       <section className="hero reveal-on-scroll">
         <div className="hero-copy">
-          <p className="eyebrow">Academic support with a warm learning center feel</p>
+          <p className="eyebrow">Academic support for children who need clearer progress</p>
           <h1 className="serif-accent hero-title">
-            Helping children build stronger skills and confidence, one subject at a time.
+            Helping children catch up, keep up, and feel confident in every core subject.
           </h1>
           <p className="hero-text">
             BrightPath combines small-group tutoring, steady routines, and caring teachers so
@@ -484,7 +484,7 @@ function HomePage() {
       <section className="section reveal-on-scroll">
         <SectionHeading
           eyebrow="Programs"
-          title="Math, English, science, and reading support that families can understand at a glance."
+          title="Four clear learning paths built to help children make real academic progress."
           description="Choose one subject area or combine support into a plan that fits your child’s goals."
         />
         <div className="program-grid home-program-grid">
@@ -544,6 +544,10 @@ function HomePage() {
               actually notice: strong teaching, small groups, clear communication, and a space
               that helps children settle in quickly.
             </p>
+            <p>
+              Our mission is simple: give children the support they need to gain momentum and
+              give families a learning center they can count on.
+            </p>
             <div className="story-panel-actions">
               <button type="button" className="btn btn-primary" onClick={() => navigateTo('/contact')}>
                 Book a Free Trial
@@ -588,6 +592,11 @@ function HomePage() {
             <p>
               We work closely with families because children progress best when home and school feel connected.
             </p>
+            <ul className="program-highlights-list">
+              <li>Short lessons with clear goals and guided practice</li>
+              <li>Friendly feedback that helps children keep moving forward</li>
+              <li>Simple parent updates so families always know what is happening</li>
+            </ul>
             <div className="mini-link-row">
               <button type="button" className="text-link-button" onClick={() => navigateTo('/about')}>
                 Learn more about our approach
@@ -656,6 +665,27 @@ function HomePage() {
               >
                 Read article
               </button>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      <section className="section reveal-on-scroll">
+        <SectionHeading
+          eyebrow="Quick questions"
+          title="A few answers families usually want first."
+          description="These give parents a fast sense of how BrightPath works before they reach out."
+        />
+        <div className="faq-grid home-faq-preview">
+          {faqs.slice(0, 3).map((item) => (
+            <article className="faq-card" key={item.question}>
+              <div className="faq-card-icon" aria-hidden="true">
+                ?
+              </div>
+              <h3>{item.question}</h3>
+              <p>{item.answer}</p>
             </article>
           ))}
         </div>

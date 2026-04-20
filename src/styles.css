@@ -1125,6 +1125,10 @@ img {
   font-weight: 900;
 }
 
+.home-faq-preview {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .program-title-row {
   display: flex;
   align-items: flex-start;
