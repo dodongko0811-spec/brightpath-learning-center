@@ -5,6 +5,7 @@ import {
   faqs,
   featureCards,
   galleryImages,
+  heroProofs,
   programHighlights,
   programStats,
   programs,
@@ -221,7 +222,7 @@ function App() {
             </button>
           ))}
           <button type="button" className="btn btn-primary nav-cta" onClick={() => navigate('/contact')}>
-            Enroll Now
+            Book a Free Trial
           </button>
         </nav>
       </header>
@@ -387,10 +388,12 @@ function HomePage() {
       <section className="hero reveal-on-scroll">
         <div className="hero-copy">
           <p className="eyebrow">Academic support with a warm learning center feel</p>
-          <h1 className="serif-accent hero-title">Helping children improve academically, one subject at a time.</h1>
+          <h1 className="serif-accent hero-title">
+            Helping children build stronger skills and confidence, one subject at a time.
+          </h1>
           <p className="hero-text">
             BrightPath combines small-group tutoring, steady routines, and caring teachers so
-            students can build confidence and make real academic progress.
+            students can improve in math, English, science, and reading without feeling rushed.
           </p>
           <div className="hero-actions">
             <button type="button" className="btn btn-primary" onClick={() => navigateTo('/contact')}>
@@ -404,6 +407,14 @@ function HomePage() {
             <span>Academic Growth</span>
             <span>Small Groups</span>
             <span>Parent Updates</span>
+          </div>
+          <div className="hero-proof-bar" aria-label="Enrollment highlights">
+            {heroProofs.map((item) => (
+              <article className="hero-proof-item" key={item.label}>
+                <strong>{item.label}</strong>
+                <span>{item.text}</span>
+              </article>
+            ))}
           </div>
         </div>
 
@@ -496,12 +507,23 @@ function HomePage() {
                   </div>
                 </div>
                 <p>{program.description}</p>
+                <ul className="program-highlights-list">
+                  {program.highlights.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
                 <button type="button" className="text-link-button" onClick={() => navigateTo('/contact')}>
                   Book a free trial
                 </button>
               </div>
             </article>
           ))}
+        </div>
+        <div className="section-inline-cta">
+          <p>Not sure which subject your child needs most? We can help you choose the right fit.</p>
+          <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/faqs')}>
+            Read FAQs
+          </button>
         </div>
       </section>
 
@@ -522,6 +544,14 @@ function HomePage() {
               actually notice: strong teaching, small groups, clear communication, and a space
               that helps children settle in quickly.
             </p>
+            <div className="story-panel-actions">
+              <button type="button" className="btn btn-primary" onClick={() => navigateTo('/contact')}>
+                Book a Free Trial
+              </button>
+              <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/programs')}>
+                Explore programs
+              </button>
+            </div>
           </article>
           <div className="home-feature-list">
             {featureCards.slice(0, 6).map((item) => (
@@ -542,7 +572,7 @@ function HomePage() {
       <SectionDivider />
 
       <section className="section section-alt reveal-on-scroll">
-        <div className="split-layout">
+          <div className="split-layout">
           <div>
             <SectionHeading
               eyebrow="Teaching approach"
@@ -558,6 +588,11 @@ function HomePage() {
             <p>
               We work closely with families because children progress best when home and school feel connected.
             </p>
+            <div className="mini-link-row">
+              <button type="button" className="text-link-button" onClick={() => navigateTo('/about')}>
+                Learn more about our approach
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -570,6 +605,10 @@ function HomePage() {
           title="The kind of place families remember."
           description="A few words from parents who chose BrightPath for academic support and a warm learning environment."
         />
+        <div className="testimonial-summary">
+          <strong>Parents mention the same three things again and again:</strong>
+          <span>calm routines, clearer progress, and children who actually look forward to coming back.</span>
+        </div>
         <div className="testimonial-grid home-testimonial-grid">
           {testimonials.map((item) => (
             <blockquote className="testimonial-card" key={item.name}>
@@ -744,6 +783,11 @@ function ProgramsPage() {
                   </div>
                 </div>
                 <p>{program.description}</p>
+                <ul className="program-highlights-list">
+                  {program.highlights.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
                 <button type="button" className="text-link-button" onClick={() => navigateTo('/contact')}>
                   Enquire about this path
                 </button>
@@ -884,6 +928,22 @@ function AboutPage() {
               <p>
                 Parents trust us because we keep communication clear and routines dependable.
               </p>
+              <div className="story-panel-actions">
+                <button type="button" className="btn btn-primary" onClick={() => navigateTo('/contact')}>
+                  Book a Free Trial
+                </button>
+                <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/programs')}>
+                  See programs
+                </button>
+              </div>
+            </div>
+            <div className="magazine-stats about-stats">
+              {programStats.map((stat) => (
+                <div key={stat.label} className="magazine-stat">
+                  <strong>{stat.value}</strong>
+                  <span>{stat.label}</span>
+                </div>
+              ))}
             </div>
             <div className="spotlight-grid about-highlights">
               {aboutHighlights.map((item) => (
@@ -1362,6 +1422,10 @@ function ContactPage() {
       }
     >
       <section className="section">
+        <div className="contact-response-note">
+          <strong>Quick response promise:</strong>
+          <span>We usually reply within one business day and can help with a visit or free trial.</span>
+        </div>
         <div className="contact-layout">
           <div className="contact-stack">
             <div className="contact-card">

@@ -31,10 +31,26 @@ export const featureCards = [
   },
 ];
 
+export const heroProofs = [
+  {
+    label: 'Free trial visits',
+    text: 'See the learning center, meet the team, and ask questions before enrolling.',
+  },
+  {
+    label: 'Small groups',
+    text: 'Children get more support, more feedback, and a calmer pace.',
+  },
+  {
+    label: 'Clear progress updates',
+    text: 'Families stay informed with simple notes and consistent communication.',
+  },
+];
+
 export const programs = [
   {
     title: 'Math Boost',
     description: 'Small-group support for number sense, problem solving, and confident homework habits.',
+    highlights: ['Number sense and fluency', 'Homework help and practice'],
     image:
       'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80',
     tag: 'Math',
@@ -42,6 +58,7 @@ export const programs = [
   {
     title: 'English & Writing',
     description: 'Reading comprehension, vocabulary, sentence building, and clear written expression.',
+    highlights: ['Reading comprehension', 'Sentence building and vocabulary'],
     image:
       'https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=900&q=80',
     tag: 'English',
@@ -49,6 +66,7 @@ export const programs = [
   {
     title: 'Science Discovery',
     description: 'Hands-on learning that makes science feel curious, practical, and exciting.',
+    highlights: ['Hands-on experiments', 'Curiosity-led discovery'],
     image:
       'https://images.unsplash.com/photo-1491013516836-7db643ee125a?auto=format&fit=crop&w=900&q=80',
     tag: 'Science',
@@ -56,6 +74,7 @@ export const programs = [
   {
     title: 'Reading & Phonics',
     description: 'A structured path for decoding, fluency, guided reading, and lasting confidence.',
+    highlights: ['Phonics foundations', 'Fluency and guided reading'],
     image:
       'https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=900&q=80',
     tag: 'Reading',
