@@ -6,6 +6,7 @@ import {
   featureCards,
   galleryImages,
   heroProofs,
+  heroMetrics,
   familySignals,
   outcomeCards,
   programHighlights,
@@ -418,6 +419,14 @@ function HomePage() {
               </article>
             ))}
           </div>
+          <div className="hero-metrics" aria-label="Quick results">
+            {heroMetrics.map((item) => (
+              <article className="hero-metric" key={item.label}>
+                <strong>{item.value}</strong>
+                <span>{item.label}</span>
+              </article>
+            ))}
+          </div>
         </div>
 
         <div className="hero-visual">
@@ -523,9 +532,14 @@ function HomePage() {
         </div>
         <div className="section-inline-cta">
           <p>Not sure which subject your child needs most? We can help you choose the right fit.</p>
-          <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/faqs')}>
-            Read FAQs
-          </button>
+          <div className="section-inline-cta-actions">
+            <button type="button" className="btn btn-primary" onClick={() => navigateTo('/contact')}>
+              Book a Free Trial
+            </button>
+            <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/faqs')}>
+              Read FAQs
+            </button>
+          </div>
         </div>
       </section>
 

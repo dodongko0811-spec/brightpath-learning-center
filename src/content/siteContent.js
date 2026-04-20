@@ -46,6 +46,21 @@ export const heroProofs = [
   },
 ];
 
+export const heroMetrics = [
+  {
+    value: '100+',
+    label: 'Students helped',
+  },
+  {
+    value: '4',
+    label: 'Core subjects',
+  },
+  {
+    value: 'Daily',
+    label: 'Parent updates',
+  },
+];
+
 export const outcomeCards = [
   {
     title: 'More confidence in core subjects',
