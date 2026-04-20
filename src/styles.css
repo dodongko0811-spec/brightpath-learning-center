@@ -419,6 +419,10 @@ img {
   font-size: 0.92rem;
 }
 
+.testimonial-summary .text-link-button {
+  margin-top: 0.75rem;
+}
+
 .hero-mini-proof {
   margin-top: 1rem;
   padding: 1rem 1.1rem;

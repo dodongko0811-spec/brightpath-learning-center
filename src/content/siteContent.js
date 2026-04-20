@@ -94,7 +94,7 @@ export const familySignals = [
 export const programs = [
   {
     title: 'Math Boost',
-    description: 'Small-group support that strengthens number sense, problem solving, and homework confidence.',
+    description: 'Small-group support that strengthens number sense, problem solving, and homework confidence so math feels manageable.',
     highlights: ['Number sense and fluency', 'Homework help and practice'],
     image:
       'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80',
@@ -102,7 +102,7 @@ export const programs = [
   },
   {
     title: 'English & Writing',
-    description: 'Reading comprehension, vocabulary, sentence building, and clear written expression that grows with practice.',
+    description: 'Reading comprehension, vocabulary, sentence building, and clear written expression that grows with practice and confidence.',
     highlights: ['Reading comprehension', 'Sentence building and vocabulary'],
     image:
       'https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=900&q=80',
@@ -110,7 +110,7 @@ export const programs = [
   },
   {
     title: 'Science Discovery',
-    description: 'Hands-on learning that makes science feel curious, practical, and exciting while keeping lessons memorable.',
+    description: 'Hands-on learning that makes science feel curious, practical, and exciting while helping ideas stick.',
     highlights: ['Hands-on experiments', 'Curiosity-led discovery'],
     image:
       'https://images.unsplash.com/photo-1491013516836-7db643ee125a?auto=format&fit=crop&w=900&q=80',
@@ -118,7 +118,7 @@ export const programs = [
   },
   {
     title: 'Reading & Phonics',
-    description: 'A structured path for decoding, fluency, guided reading, and lasting confidence in early reading.',
+    description: 'A structured path for decoding, fluency, guided reading, and lasting confidence in early reading and word recognition.',
     highlights: ['Phonics foundations', 'Fluency and guided reading'],
     image:
       'https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=900&q=80',

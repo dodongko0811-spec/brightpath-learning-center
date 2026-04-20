@@ -396,7 +396,8 @@ function HomePage() {
           </h1>
           <p className="hero-text">
             BrightPath combines small-group tutoring, steady routines, and caring teachers so
-            students can improve in math, English, science, and reading without feeling rushed.
+            students can improve grades, build confidence, and keep up in math, English, science,
+            and reading without feeling rushed.
           </p>
           <div className="hero-actions">
             <button type="button" className="btn btn-primary" onClick={() => navigateTo('/contact')}>
@@ -496,7 +497,7 @@ function HomePage() {
         <SectionHeading
           eyebrow="Programs"
           title="Four clear learning paths built to help children make real academic progress."
-          description="Choose one subject area or combine support into a plan that fits your child’s goals."
+          description="Choose one subject area or combine support into a plan that fits your child’s goals and confidence level."
         />
         <div className="program-grid home-program-grid">
           {programs.map((program) => (
@@ -670,6 +671,9 @@ function HomePage() {
         <div className="testimonial-summary">
           <strong>Parents mention the same three things again and again:</strong>
           <span>calm routines, clearer progress, and children who actually look forward to coming back.</span>
+          <button type="button" className="text-link-button" onClick={() => navigateTo('/contact')}>
+            Talk to admissions
+          </button>
         </div>
         <div className="testimonial-grid home-testimonial-grid">
           {testimonials.map((item) => (
