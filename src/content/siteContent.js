@@ -61,6 +61,21 @@ export const outcomeCards = [
   },
 ];
 
+export const familySignals = [
+  {
+    title: 'Children settle in faster',
+    text: 'Warm routines and small groups make the first days feel easier.',
+  },
+  {
+    title: 'Parents know what to expect',
+    text: 'Simple communication keeps the next step clear from inquiry to enrollment.',
+  },
+  {
+    title: 'Learning feels less overwhelming',
+    text: 'Focused lessons turn big goals into smaller wins families can see.',
+  },
+];
+
 export const programs = [
   {
     title: 'Math Boost',

@@ -6,6 +6,7 @@ import {
   featureCards,
   galleryImages,
   heroProofs,
+  familySignals,
   outcomeCards,
   programHighlights,
   programStats,
@@ -390,7 +391,7 @@ function HomePage() {
         <div className="hero-copy">
           <p className="eyebrow">Academic support for children who need clearer progress</p>
           <h1 className="serif-accent hero-title">
-            Helping children catch up, keep up, and feel confident in math, reading, writing, and science.
+            Helping students improve grades, build confidence, and make steady progress in every core subject.
           </h1>
           <p className="hero-text">
             BrightPath combines small-group tutoring, steady routines, and caring teachers so
@@ -578,8 +579,8 @@ function HomePage() {
 
       <section className="section reveal-on-scroll">
         <SectionHeading
-          eyebrow="What changes"
-          title="The kind of progress parents hope to see."
+          eyebrow="What families notice"
+          title="The early wins parents look for first."
           description="BrightPath is built to help children feel more capable in the subjects that matter most."
         />
         <div className="feature-grid outcome-grid">
@@ -588,6 +589,14 @@ function HomePage() {
               <div className="feature-icon" aria-hidden="true">
                 0{index + 1}
               </div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+        <div className="family-signals">
+          {familySignals.map((item) => (
+            <article className="family-signal" key={item.title}>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
             </article>
