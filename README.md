@@ -37,9 +37,12 @@ VITE_FIREBASE_PROJECT_ID=brightpath-learning-center
 VITE_FIREBASE_STORAGE_BUCKET=brightpath-learning-center.firebasestorage.app
 VITE_FIREBASE_MESSAGING_SENDER_ID=...
 VITE_FIREBASE_APP_ID=...
+VITE_FIREBASE_APPCHECK_SITE_KEY=...
 ```
 
 The example values are listed in `.env.example`.
+
+App Check is enabled for the BrightPath Firestore project using reCAPTCHA Enterprise, so the live site expects the App Check site key to be present at build time.
 
 ## Build
 

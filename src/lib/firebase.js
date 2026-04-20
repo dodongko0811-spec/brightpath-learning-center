@@ -1,5 +1,6 @@
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import { getApp, getApps, initializeApp } from 'firebase/app';
+import { initializeAppCheck, ReCaptchaEnterpriseProvider } from 'firebase/app-check';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY || '',
@@ -11,6 +12,19 @@ const firebaseConfig = {
 };
 
 const firebaseApp = getApps().length ? getApp() : initializeApp(firebaseConfig);
+
+const appCheckSiteKey = import.meta.env.VITE_FIREBASE_APPCHECK_SITE_KEY || '';
+
+if (typeof window !== 'undefined' && import.meta.env.DEV) {
+  self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+}
+
+if (appCheckSiteKey) {
+  initializeAppCheck(firebaseApp, {
+    provider: new ReCaptchaEnterpriseProvider(appCheckSiteKey),
+    isTokenAutoRefreshEnabled: true,
+  });
+}
 
 export const firebaseDb = getFirestore(firebaseApp);
 export const isFirebaseReady = Boolean(firebaseConfig.projectId && firebaseConfig.apiKey && firebaseConfig.appId);
