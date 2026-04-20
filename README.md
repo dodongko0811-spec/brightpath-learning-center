@@ -38,11 +38,14 @@ VITE_FIREBASE_STORAGE_BUCKET=brightpath-learning-center.firebasestorage.app
 VITE_FIREBASE_MESSAGING_SENDER_ID=...
 VITE_FIREBASE_APP_ID=...
 VITE_FIREBASE_APPCHECK_SITE_KEY=...
+VITE_ADMIN_DASHBOARD_CODE=...
 ```
 
 The example values are listed in `.env.example`.
 
 App Check is enabled for the BrightPath Firestore project using reCAPTCHA Enterprise, so the live site expects the App Check site key to be present at build time.
+
+The `/admin` route now uses a local fallback code gate because Firebase Auth requires billing on this project. The admin dashboard only mirrors data captured in the browser after successful submits and tracking events.
 
 ## Build
 
