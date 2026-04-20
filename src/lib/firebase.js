@@ -15,7 +15,7 @@ const firebaseApp = getApps().length ? getApp() : initializeApp(firebaseConfig);
 
 const appCheckSiteKey = import.meta.env.VITE_FIREBASE_APPCHECK_SITE_KEY || '';
 export const adminDashboardCode = import.meta.env.VITE_ADMIN_DASHBOARD_CODE || 'brightpath-admin';
-export const adminAccessMode = import.meta.env.VITE_ADMIN_ACCESS_MODE || 'local-passcode';
+export const adminAccessMode = import.meta.env.VITE_ADMIN_ACCESS_MODE || 'temporary-passcode';
 const adminSessionStorageKey = 'brightpath-admin-unlocked';
 const adminCacheKeys = {
   inquiries: 'brightpath-admin-inquiries',
