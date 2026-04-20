@@ -31,31 +31,95 @@ export const featureCards = [
   },
 ];
 
+export const heroProofs = [
+  {
+    label: 'Free trial visits',
+    text: 'See the learning center, meet the team, and ask questions before enrolling.',
+  },
+  {
+    label: 'Small groups',
+    text: 'Children get more support, more feedback, and a calmer pace.',
+  },
+  {
+    label: 'Clear progress updates',
+    text: 'Families stay informed with simple notes and consistent communication.',
+  },
+];
+
+export const heroMetrics = [
+  {
+    value: '100+',
+    label: 'Students helped',
+  },
+  {
+    value: '4',
+    label: 'Core subjects',
+  },
+  {
+    value: 'Daily',
+    label: 'Parent updates',
+  },
+];
+
+export const outcomeCards = [
+  {
+    title: 'More confidence in core subjects',
+    text: 'Children get targeted support in the places where they feel most unsure.',
+  },
+  {
+    title: 'Clearer homework routines',
+    text: 'Families leave with simpler practice habits that are easier to keep up at home.',
+  },
+  {
+    title: 'Visible academic momentum',
+    text: 'Small wins stack up into better participation, stronger focus, and steadier progress.',
+  },
+];
+
+export const familySignals = [
+  {
+    title: 'Children settle in faster',
+    text: 'Warm routines and small groups make the first days feel easier.',
+  },
+  {
+    title: 'Parents know what to expect',
+    text: 'Simple communication keeps the next step clear from inquiry to enrollment.',
+  },
+  {
+    title: 'Learning feels less overwhelming',
+    text: 'Focused lessons turn big goals into smaller wins families can see.',
+  },
+];
+
 export const programs = [
   {
     title: 'Math Boost',
-    description: 'Small-group support for number sense, problem solving, and confident homework habits.',
+    description: 'Small-group support that strengthens number sense, problem solving, and homework confidence so math feels manageable.',
+    highlights: ['Number sense and fluency', 'Homework help and practice'],
     image:
       'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80',
     tag: 'Math',
   },
   {
     title: 'English & Writing',
-    description: 'Reading comprehension, vocabulary, sentence building, and clear written expression.',
+    description: 'Reading comprehension, vocabulary, sentence building, and clear written expression that grows with practice and confidence.',
+    highlights: ['Reading comprehension', 'Sentence building and vocabulary'],
     image:
       'https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=900&q=80',
     tag: 'English',
   },
   {
     title: 'Science Discovery',
-    description: 'Hands-on learning that makes science feel curious, practical, and exciting.',
+    description: 'Hands-on learning that makes science feel curious, practical, and exciting while helping ideas stick.',
+    highlights: ['Hands-on experiments', 'Curiosity-led discovery'],
     image:
       'https://images.unsplash.com/photo-1491013516836-7db643ee125a?auto=format&fit=crop&w=900&q=80',
     tag: 'Science',
   },
   {
     title: 'Reading & Phonics',
-    description: 'A structured path for decoding, fluency, guided reading, and lasting confidence.',
+    description: 'A structured path for decoding, fluency, guided reading, and lasting confidence in early reading and word recognition.',
+    highlights: ['Phonics foundations', 'Fluency and guided reading'],
     image:
       'https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=900&q=80',
     tag: 'Reading',

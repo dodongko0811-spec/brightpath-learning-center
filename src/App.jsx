@@ -5,6 +5,10 @@ import {
   faqs,
   featureCards,
   galleryImages,
+  heroProofs,
+  heroMetrics,
+  familySignals,
+  outcomeCards,
   programHighlights,
   programStats,
   programs,
@@ -221,7 +225,7 @@ function App() {
             </button>
           ))}
           <button type="button" className="btn btn-primary nav-cta" onClick={() => navigate('/contact')}>
-            Enroll Now
+            Book a Free Trial
           </button>
         </nav>
       </header>
@@ -386,24 +390,43 @@ function HomePage() {
     <div>
       <section className="hero reveal-on-scroll">
         <div className="hero-copy">
-          <p className="eyebrow">Academic support with a warm learning center feel</p>
-          <h1 className="serif-accent hero-title">Helping children improve academically, one subject at a time.</h1>
+          <p className="eyebrow">Academic support for children who need clearer progress</p>
+          <h1 className="serif-accent hero-title">
+            Helping students improve grades, build confidence, and make steady progress in every core subject.
+          </h1>
           <p className="hero-text">
             BrightPath combines small-group tutoring, steady routines, and caring teachers so
-            students can build confidence and make real academic progress.
+            students can improve grades, build confidence, and keep up in math, English, science,
+            and reading without feeling rushed.
           </p>
           <div className="hero-actions">
             <button type="button" className="btn btn-primary" onClick={() => navigateTo('/contact')}>
               Enroll Now
             </button>
             <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/contact')}>
-              Book a Free Trial
+              Start Learning Today
             </button>
           </div>
           <div className="trust-points" aria-label="Trust points">
             <span>Academic Growth</span>
             <span>Small Groups</span>
             <span>Parent Updates</span>
+          </div>
+          <div className="hero-proof-bar" aria-label="Enrollment highlights">
+            {heroProofs.map((item) => (
+              <article className="hero-proof-item" key={item.label}>
+                <strong>{item.label}</strong>
+                <span>{item.text}</span>
+              </article>
+            ))}
+          </div>
+          <div className="hero-metrics" aria-label="Quick results">
+            {heroMetrics.map((item) => (
+              <article className="hero-metric" key={item.label}>
+                <strong>{item.value}</strong>
+                <span>{item.label}</span>
+              </article>
+            ))}
           </div>
         </div>
 
@@ -473,8 +496,8 @@ function HomePage() {
       <section className="section reveal-on-scroll">
         <SectionHeading
           eyebrow="Programs"
-          title="Math, English, science, and reading support that families can understand at a glance."
-          description="Choose one subject area or combine support into a plan that fits your child’s goals."
+          title="Four clear learning paths built to help children make real academic progress."
+          description="Choose one subject area or combine support into a plan that fits your child’s goals and confidence level."
         />
         <div className="program-grid home-program-grid">
           {programs.map((program) => (
@@ -496,12 +519,28 @@ function HomePage() {
                   </div>
                 </div>
                 <p>{program.description}</p>
+                <ul className="program-highlights-list">
+                  {program.highlights.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
                 <button type="button" className="text-link-button" onClick={() => navigateTo('/contact')}>
-                  Book a free trial
+                  Start learning today
                 </button>
               </div>
             </article>
           ))}
+        </div>
+        <div className="section-inline-cta">
+          <p>Not sure which subject your child needs most? We can help you choose the right fit.</p>
+          <div className="section-inline-cta-actions">
+            <button type="button" className="btn btn-primary" onClick={() => navigateTo('/contact')}>
+              Book a Free Trial
+            </button>
+            <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/faqs')}>
+              Read FAQs
+            </button>
+          </div>
         </div>
       </section>
 
@@ -522,6 +561,22 @@ function HomePage() {
               actually notice: strong teaching, small groups, clear communication, and a space
               that helps children settle in quickly.
             </p>
+            <p>
+              Our mission is simple: give children the support they need to gain momentum and
+              give families a learning center they can count on.
+            </p>
+            <div className="story-panel-actions">
+              <button type="button" className="btn btn-primary" onClick={() => navigateTo('/contact')}>
+                Book a Free Trial
+              </button>
+              <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/programs')}>
+                Explore programs
+              </button>
+            </div>
+            <div className="hero-mini-proof">
+              <strong>Confidence-first support</strong>
+              <span>Children leave with clearer steps, steadier habits, and more belief in what they can do.</span>
+            </div>
           </article>
           <div className="home-feature-list">
             {featureCards.slice(0, 6).map((item) => (
@@ -541,8 +596,37 @@ function HomePage() {
 
       <SectionDivider />
 
+      <section className="section reveal-on-scroll">
+        <SectionHeading
+          eyebrow="What families notice"
+          title="The early wins parents look for first."
+          description="BrightPath is built to help children feel more capable in the subjects that matter most."
+        />
+        <div className="feature-grid outcome-grid">
+          {outcomeCards.map((item, index) => (
+            <article className="feature-card outcome-card" key={item.title}>
+              <div className="feature-icon" aria-hidden="true">
+                0{index + 1}
+              </div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+        <div className="family-signals">
+          {familySignals.map((item) => (
+            <article className="family-signal" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <SectionDivider />
+
       <section className="section section-alt reveal-on-scroll">
-        <div className="split-layout">
+          <div className="split-layout">
           <div>
             <SectionHeading
               eyebrow="Teaching approach"
@@ -558,6 +642,20 @@ function HomePage() {
             <p>
               We work closely with families because children progress best when home and school feel connected.
             </p>
+            <ul className="program-highlights-list">
+              <li>Short lessons with clear goals and guided practice</li>
+              <li>Friendly feedback that helps children keep moving forward</li>
+              <li>Simple parent updates so families always know what is happening</li>
+            </ul>
+            <div className="callout-note">
+              <strong>Our promise:</strong>
+              <span>We keep learning personal, calm, and focused on steady gains.</span>
+            </div>
+            <div className="mini-link-row">
+              <button type="button" className="text-link-button" onClick={() => navigateTo('/about')}>
+                Learn more about our approach
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -570,6 +668,13 @@ function HomePage() {
           title="The kind of place families remember."
           description="A few words from parents who chose BrightPath for academic support and a warm learning environment."
         />
+        <div className="testimonial-summary">
+          <strong>Parents mention the same three things again and again:</strong>
+          <span>calm routines, clearer progress, and children who actually look forward to coming back.</span>
+          <button type="button" className="text-link-button" onClick={() => navigateTo('/contact')}>
+            Talk to admissions
+          </button>
+        </div>
         <div className="testimonial-grid home-testimonial-grid">
           {testimonials.map((item) => (
             <blockquote className="testimonial-card" key={item.name}>
@@ -617,6 +722,27 @@ function HomePage() {
               >
                 Read article
               </button>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      <section className="section reveal-on-scroll">
+        <SectionHeading
+          eyebrow="Quick questions"
+          title="A few answers families usually want first."
+          description="These give parents a fast sense of how BrightPath works before they reach out."
+        />
+        <div className="faq-grid home-faq-preview">
+          {faqs.slice(0, 3).map((item) => (
+            <article className="faq-card" key={item.question}>
+              <div className="faq-card-icon" aria-hidden="true">
+                ?
+              </div>
+              <h3>{item.question}</h3>
+              <p>{item.answer}</p>
             </article>
           ))}
         </div>
@@ -744,6 +870,11 @@ function ProgramsPage() {
                   </div>
                 </div>
                 <p>{program.description}</p>
+                <ul className="program-highlights-list">
+                  {program.highlights.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
                 <button type="button" className="text-link-button" onClick={() => navigateTo('/contact')}>
                   Enquire about this path
                 </button>
@@ -865,8 +996,8 @@ function AboutPage() {
           <div>
             <SectionHeading
               eyebrow="Our story"
-              title="A simple idea: children learn best when they feel known and supported."
-              description="BrightPath started with the belief that education should be warm, structured, and personal."
+              title="A simple idea: children learn best when they feel known, supported, and capable."
+              description="BrightPath started with the belief that tutoring should feel warm, structured, and personally encouraging."
             />
             <div className="about-image-card">
               <img
@@ -884,6 +1015,26 @@ function AboutPage() {
               <p>
                 Parents trust us because we keep communication clear and routines dependable.
               </p>
+              <p>
+                Our team teaches with patience, clear steps, and a steady rhythm that helps children
+                feel successful early and often.
+              </p>
+              <div className="story-panel-actions">
+                <button type="button" className="btn btn-primary" onClick={() => navigateTo('/contact')}>
+                  Book a Free Trial
+                </button>
+                <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/programs')}>
+                  See programs
+                </button>
+              </div>
+            </div>
+            <div className="magazine-stats about-stats">
+              {programStats.map((stat) => (
+                <div key={stat.label} className="magazine-stat">
+                  <strong>{stat.value}</strong>
+                  <span>{stat.label}</span>
+                </div>
+              ))}
             </div>
             <div className="spotlight-grid about-highlights">
               {aboutHighlights.map((item) => (
@@ -1362,6 +1513,10 @@ function ContactPage() {
       }
     >
       <section className="section">
+        <div className="contact-response-note">
+          <strong>Quick response promise:</strong>
+          <span>We usually reply within one business day and can help with a visit or free trial.</span>
+        </div>
         <div className="contact-layout">
           <div className="contact-stack">
             <div className="contact-card">
