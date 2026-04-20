@@ -386,24 +386,24 @@ function HomePage() {
     <div>
       <section className="hero reveal-on-scroll">
         <div className="hero-copy">
-          <p className="eyebrow">Boutique early childhood education</p>
-          <h1 className="serif-accent hero-title">A refined start for bright young learners.</h1>
+          <p className="eyebrow">Academic support with a warm learning center feel</p>
+          <h1 className="serif-accent hero-title">Helping children improve academically, one subject at a time.</h1>
           <p className="hero-text">
-            Thoughtful classes, small groups, and warm routines designed to help children grow
-            with confidence from the very beginning.
+            BrightPath combines small-group tutoring, steady routines, and caring teachers so
+            students can build confidence and make real academic progress.
           </p>
           <div className="hero-actions">
             <button type="button" className="btn btn-primary" onClick={() => navigateTo('/contact')}>
               Enroll Now
             </button>
-            <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/programs')}>
-              Explore Programs
+            <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/contact')}>
+              Book a Free Trial
             </button>
           </div>
           <div className="trust-points" aria-label="Trust points">
-            <span>Safe</span>
-            <span>Fun</span>
-            <span>Structured Learning</span>
+            <span>Academic Growth</span>
+            <span>Small Groups</span>
+            <span>Parent Updates</span>
           </div>
         </div>
 
@@ -441,8 +441,8 @@ function HomePage() {
       <section className="section reveal-on-scroll">
         <SectionHeading
           eyebrow="Welcome"
-          title="A calm, thoughtful start to the school journey."
-          description="BrightPath combines strong teaching, thoughtful routines, and a welcoming atmosphere so children settle in with confidence."
+          title="A calm, structured place where students can improve and feel confident."
+          description="BrightPath combines focused teaching, thoughtful routines, and a welcoming atmosphere so children settle in and keep progressing."
           titleClassName="serif-accent"
         />
         <div className="home-spotlight">
@@ -470,20 +470,57 @@ function HomePage() {
 
       <SectionDivider />
 
+      <section className="section reveal-on-scroll">
+        <SectionHeading
+          eyebrow="Programs"
+          title="Math, English, science, and reading support that families can understand at a glance."
+          description="Choose one subject area or combine support into a plan that fits your child’s goals."
+        />
+        <div className="program-grid home-program-grid">
+          {programs.map((program) => (
+            <article className="program-card program-card-standard" key={program.title}>
+              <div className="program-image-wrap">
+                <img src={program.image} alt={program.title} />
+                <span className="program-chip" aria-hidden="true">
+                  {program.tag}
+                </span>
+              </div>
+              <div className="program-content">
+                <div className="program-title-row">
+                  <div className="program-mini-icon" aria-hidden="true">
+                    {program.title.slice(0, 2).toUpperCase()}
+                  </div>
+                  <div>
+                    <p className="blog-label">{program.tag}</p>
+                    <h3>{program.title}</h3>
+                  </div>
+                </div>
+                <p>{program.description}</p>
+                <button type="button" className="text-link-button" onClick={() => navigateTo('/contact')}>
+                  Book a free trial
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <SectionDivider />
+
       <section className="section section-alt reveal-on-scroll">
         <SectionHeading
           eyebrow="Why families stay"
           title="A few steady details that shape the experience."
-          description="The right learning environment should feel welcoming, dependable, and easy to trust."
+          description="The right learning environment should feel welcoming, dependable, and focused on progress."
         />
         <div className="home-feature-layout">
           <article className="story-panel home-feature-lead">
             <p className="eyebrow">Built around calm routines</p>
-            <h3>BrightPath is designed to feel steady, human, and unhurried.</h3>
+            <h3>BrightPath is designed to feel steady, human, and easy to trust.</h3>
             <p>
-              Instead of a busy dashboard of promises, the experience is built around a few things
-              families actually notice: clear communication, warm teachers, and a space that helps
-              children settle in quickly.
+              Instead of a busy list of claims, the experience focuses on the details families
+              actually notice: strong teaching, small groups, clear communication, and a space
+              that helps children settle in quickly.
             </p>
           </article>
           <div className="home-feature-list">
@@ -509,14 +546,14 @@ function HomePage() {
           <div>
             <SectionHeading
               eyebrow="Teaching approach"
-              title="Playful, steady, and quietly structured."
+              title="Practical teaching that balances care, structure, and academic progress."
               description="We focus on routines that help children settle in, participate, and build confidence without pressure."
             />
           </div>
           <div className="story-panel">
             <p>
               Our classes blend guided instruction with hands-on discovery, so children stay engaged
-              while building real skills.
+              while building real skills in math, English, science, and reading.
             </p>
             <p>
               We work closely with families because children progress best when home and school feel connected.
@@ -531,7 +568,7 @@ function HomePage() {
         <SectionHeading
           eyebrow="Parent feedback"
           title="The kind of place families remember."
-          description="A few words from parents who chose BrightPath for their children."
+          description="A few words from parents who chose BrightPath for academic support and a warm learning environment."
         />
         <div className="testimonial-grid home-testimonial-grid">
           {testimonials.map((item) => (
@@ -592,9 +629,9 @@ function HomePage() {
         />
         <div className="home-editorial-overlay">
           <p className="eyebrow">The BrightPath rhythm</p>
-          <h2>Calm mornings, thoughtful teaching, visible progress.</h2>
+          <h2>Calm mornings, focused teaching, visible progress.</h2>
           <p>
-            A boutique learning center where the atmosphere feels warm, polished, and easy to trust.
+            A learning center where the atmosphere feels warm, polished, and focused on results.
           </p>
         </div>
       </section>
@@ -615,7 +652,7 @@ function HomePage() {
             Enroll Now
           </button>
           <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/contact')}>
-            Contact Us
+            Book a Free Trial
           </button>
         </div>
       </section>
@@ -639,7 +676,7 @@ function ProgramsPage() {
             Enroll Now
           </button>
           <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/faqs')}>
-            Ask a question
+            Book a Free Trial
           </button>
         </>
       }
@@ -650,8 +687,8 @@ function ProgramsPage() {
             <p className="eyebrow">Program lineup</p>
             <h2>Four learning paths, presented like a feature story.</h2>
             <p>
-              BrightPath offers a mix of early education, reading support, tutoring, and seasonal
-              learning. Each path is designed to feel personal, structured, and easy to scan.
+              BrightPath offers math, English, science, and reading support. Each path is designed
+              to feel personal, structured, and easy to scan.
             </p>
             <div className="magazine-stats">
               {programStats.map((stat) => (
@@ -795,6 +832,9 @@ function ProgramsPage() {
           <button type="button" className="btn btn-primary" onClick={() => navigateTo('/contact')}>
             Contact admissions
           </button>
+          <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/contact')}>
+            Book a Free Trial
+          </button>
         </div>
       </section>
     </PageShell>
@@ -805,7 +845,7 @@ function AboutPage() {
   return (
     <PageShell
       eyebrow="About"
-      title="A learning center built for steady growth and genuine family trust."
+      title="A learning center built for steady growth, real progress, and family trust."
       description="BrightPath was created to feel welcoming, organized, and encouraging from the very first visit."
       heroImage="https://images.unsplash.com/photo-1491013516836-7db643ee125a?auto=format&fit=crop&w=1400&q=80"
       heroLayout="reverse"
@@ -825,8 +865,8 @@ function AboutPage() {
           <div>
             <SectionHeading
               eyebrow="Our story"
-              title="A simple idea: children learn best when they feel known."
-              description="BrightPath started with the belief that early education should be warm, structured, and personal."
+              title="A simple idea: children learn best when they feel known and supported."
+              description="BrightPath started with the belief that education should be warm, structured, and personal."
             />
             <div className="about-image-card">
               <img
@@ -838,7 +878,7 @@ function AboutPage() {
           <div className="story-stack">
             <div className="story-panel">
               <p>
-                We combine preschool readiness, reading support, and enrichment so each child can make
+                We combine subject-based support, reading help, and tutoring so each child can make
                 real progress without feeling rushed.
               </p>
               <p>
@@ -1304,13 +1344,16 @@ function ContactPage() {
   return (
     <PageShell
       eyebrow="Contact"
-      title="Start the conversation and plan your visit to BrightPath."
+      title="Book a free trial, ask a question, or plan a visit to BrightPath."
       description="Whether you're ready to enroll or just exploring, we'd be happy to help."
       heroLayout="minimal"
       actions={
         <>
-          <a className="btn btn-primary" href="mailto:kierjoyno@gmail.com">
-            Email us
+          <a
+            className="btn btn-primary"
+            href="mailto:kierjoyno@gmail.com?subject=BrightPath%20Free%20Trial%20Request"
+          >
+            Book a Free Trial
           </a>
           <a className="btn btn-secondary" href="tel:+15551234567">
             Call now
@@ -1323,7 +1366,7 @@ function ContactPage() {
           <div className="contact-stack">
             <div className="contact-card">
               <div className="contact-card-icon" aria-hidden="true">
-                ðŸ“
+                LOC
               </div>
               <h3>Contact details</h3>
               <p>128 Willow Street, Suite 4, Harborview</p>
@@ -1343,6 +1386,24 @@ function ContactPage() {
                   </div>
                 </div>
               ))}
+            </div>
+            <div className="contact-map-card">
+              <div className="contact-card-icon" aria-hidden="true">
+                MAP
+              </div>
+              <h3>Find BrightPath on the map</h3>
+              <p>
+                Families visit our Harborview location for tours, trials, and enrollment
+                conversations.
+              </p>
+              <a
+                className="text-link-button"
+                href="https://www.google.com/maps/search/?api=1&query=128%20Willow%20Street%2C%20Suite%204%2C%20Harborview"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Open in Google Maps
+              </a>
             </div>
           </div>
           <form className="contact-form" onSubmit={handleSubmit}>
@@ -1439,8 +1500,11 @@ function ContactPage() {
           <h2>We're ready when you are.</h2>
         </div>
         <div className="cta-actions">
-          <a className="btn btn-primary" href="mailto:kierjoyno@gmail.com">
-            Email admissions
+          <a
+            className="btn btn-primary"
+            href="mailto:kierjoyno@gmail.com?subject=BrightPath%20Free%20Trial%20Request"
+          >
+            Book a Free Trial
           </a>
         </div>
       </section>
@@ -1562,7 +1626,7 @@ function PrivacyPolicyPage() {
         </div>
         <div className="cta-actions">
           <button type="button" className="btn btn-primary" onClick={() => navigateTo('/contact')}>
-            Ask a question
+            Book a Free Trial
           </button>
           <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/')}>
             Back to home
