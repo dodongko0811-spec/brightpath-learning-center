@@ -22,11 +22,15 @@ import {
   thankYouSteps,
 } from './content/siteContent';
 import {
-  adminDashboardCode,
+  adminAccessMode,
+  clearAdminDashboardUnlocked,
   getAdminDashboardData,
+  isAdminDashboardUnlocked,
   isFirebaseReady,
   saveContactInquiry,
   saveSiteEvent,
+  setAdminDashboardUnlocked,
+  verifyAdminCode,
 } from './lib/firebase';
 
 const routes = [
@@ -308,24 +312,18 @@ function useAdminDashboard() {
 
 function useAdminAccess() {
   const [isUnlocked, setIsUnlocked] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    return window.sessionStorage.getItem('brightpath-admin-unlocked') === 'true';
+    return isAdminDashboardUnlocked();
   });
 
   const unlock = (code) => {
-    const normalized = String(code || '').trim();
-    const success = normalized && normalized === adminDashboardCode;
-    if (typeof window !== 'undefined') {
-      window.sessionStorage.setItem('brightpath-admin-unlocked', success ? 'true' : 'false');
-    }
+    const success = verifyAdminCode(code);
+    setAdminDashboardUnlocked(success);
     setIsUnlocked(success);
     return success;
   };
 
   const lock = () => {
-    if (typeof window !== 'undefined') {
-      window.sessionStorage.removeItem('brightpath-admin-unlocked');
-    }
+    clearAdminDashboardUnlocked();
     setIsUnlocked(false);
   };
 
@@ -1771,13 +1769,14 @@ function FirebaseAdminPage() {
   const { data, refresh } = useAdminDashboard();
   const { isUnlocked, unlock, lock } = useAdminAccess();
   const [code, setCode] = useState('');
+  const [error, setError] = useState('');
 
   if (!isUnlocked) {
     return (
       <PageShell
-        eyebrow="Admin Access"
+        eyebrow="Private access"
         title="Enter the BrightPath admin code."
-        description="This fallback dashboard stays local to the browser and does not depend on Firebase Auth."
+        description="This session-locked dashboard keeps the private view separate from the public site."
         heroLayout="minimal"
         actions={
           <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/')}>
@@ -1787,17 +1786,23 @@ function FirebaseAdminPage() {
       >
         <section className="section">
           <div className="story-panel admin-login-panel">
-            <p className="blog-label">Protected view</p>
-            <h3>Use the admin code to open the dashboard.</h3>
+            <p className="blog-label">Secure view</p>
+            <h3>Use the private code to open the dashboard.</h3>
             <p>
-              Firebase Auth is blocked on the current plan, so this is a lightweight fallback for
-              reviewing mirrored inquiries and tracking data from the browser.
+              The dashboard is kept intentionally simple today, with access centralized in one
+              place so it can be swapped to Firebase Auth later without reshaping the content.
             </p>
+            <div className="admin-access-meta" aria-label="Dashboard access details">
+              <span className="admin-access-chip">Mode: {adminAccessMode}</span>
+              <span className="admin-access-chip">Session only</span>
+              <span className="admin-access-chip">Mirrored data</span>
+            </div>
             <form
               className="admin-login-form"
               onSubmit={(event) => {
                 event.preventDefault();
-                unlock(code);
+                const success = unlock(code);
+                setError(success ? '' : 'That code did not unlock the dashboard.');
               }}
             >
               <label>
@@ -1805,10 +1810,20 @@ function FirebaseAdminPage() {
                 <input
                   type="password"
                   value={code}
-                  onChange={(event) => setCode(event.target.value)}
+                  onChange={(event) => {
+                    setCode(event.target.value);
+                    if (error) {
+                      setError('');
+                    }
+                  }}
                   placeholder="Enter the code"
                 />
               </label>
+              {error ? (
+                <p className="admin-error" role="alert">
+                  {error}
+                </p>
+              ) : null}
               <div className="hero-actions">
                 <button type="submit" className="btn btn-primary">
                   Open dashboard
@@ -1829,9 +1844,9 @@ function FirebaseAdminPage() {
 
   return (
     <PageShell
-      eyebrow="Admin Dashboard"
-      title="Private BrightPath activity dashboard."
-      description="This fallback view shows the latest browser-mirrored inquiries and site events while Firebase Auth remains unavailable on the current plan."
+      eyebrow="Private dashboard"
+      title="BrightPath activity dashboard."
+      description="A private browser session view for reviewing mirrored inquiries and site activity."
       heroLayout="minimal"
       actions={
         <>
@@ -1853,8 +1868,8 @@ function FirebaseAdminPage() {
             <div className="feature-icon" aria-hidden="true">
               FB
             </div>
-            <h3>Firebase status</h3>
-            <p>{isFirebaseReady ? 'Connected' : 'Not configured'}</p>
+            <h3>Storage status</h3>
+            <p>{isFirebaseReady ? 'Connected to Firestore' : 'Firebase not configured'}</p>
           </article>
           <article className="feature-card">
             <div className="feature-icon" aria-hidden="true">
@@ -1862,6 +1877,13 @@ function FirebaseAdminPage() {
             </div>
             <h3>Project ID</h3>
             <p>brightpath-learning-center</p>
+          </article>
+          <article className="feature-card">
+            <div className="feature-icon" aria-hidden="true">
+              AC
+            </div>
+            <h3>Access mode</h3>
+            <p>{adminAccessMode === 'local-passcode' ? 'Local passcode' : adminAccessMode}</p>
           </article>
           <article className="feature-card">
             <div className="feature-icon" aria-hidden="true">
@@ -1919,6 +1941,27 @@ function FirebaseAdminPage() {
                 <p>No mirrored events yet. Browse the site to populate this area.</p>
               )}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="split-layout">
+          <div className="story-panel">
+            <p className="blog-label">Future ready</p>
+            <h3>The access layer is isolated for a later Firebase Auth swap.</h3>
+            <p>
+              The dashboard content reads from one helper, and the access check lives in a separate
+              helper too, so upgrading the sign-in method later only touches a small slice of code.
+            </p>
+          </div>
+          <div className="story-panel">
+            <p className="blog-label">Current setup</p>
+            <h3>Private access stays simple until the billing-backed auth path is ready.</h3>
+            <p>
+              For now the view is session locked, data is mirrored from successful site activity,
+              and the public pages remain unchanged.
+            </p>
           </div>
         </div>
       </section>
