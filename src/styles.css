@@ -389,6 +389,26 @@ img {
   font-size: 0.92rem;
 }
 
+.hero-mini-proof {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(30, 136, 229, 0.08), rgba(255, 255, 255, 0.94));
+  border: 1px solid rgba(30, 136, 229, 0.12);
+}
+
+.hero-mini-proof strong {
+  display: block;
+  color: var(--ink);
+}
+
+.hero-mini-proof span {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 .callout-note {
   margin-top: 1rem;
   padding: 1rem 1.1rem;

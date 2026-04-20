@@ -402,7 +402,7 @@ function HomePage() {
               Enroll Now
             </button>
             <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/contact')}>
-              Book a Free Trial
+              Start Learning Today
             </button>
           </div>
           <div className="trust-points" aria-label="Trust points">
@@ -515,7 +515,7 @@ function HomePage() {
                   ))}
                 </ul>
                 <button type="button" className="text-link-button" onClick={() => navigateTo('/contact')}>
-                  Book a free trial
+                  Start learning today
                 </button>
               </div>
             </article>
@@ -557,6 +557,10 @@ function HomePage() {
               <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/programs')}>
                 Explore programs
               </button>
+            </div>
+            <div className="hero-mini-proof">
+              <strong>Confidence-first support</strong>
+              <span>Children leave with clearer steps, steadier habits, and more belief in what they can do.</span>
             </div>
           </article>
           <div className="home-feature-list">
