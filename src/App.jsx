@@ -1776,7 +1776,7 @@ function FirebaseAdminPage() {
       <PageShell
         eyebrow="Private access"
         title="Enter the BrightPath admin code."
-        description="This session-locked dashboard keeps the private view separate from the public site."
+        description="This temporary session-locked dashboard keeps the private view separate from the public site."
         heroLayout="minimal"
         actions={
           <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/')}>
@@ -1787,13 +1787,15 @@ function FirebaseAdminPage() {
         <section className="section">
           <div className="story-panel admin-login-panel">
             <p className="blog-label">Secure view</p>
-            <h3>Use the private code to open the dashboard.</h3>
+            <h3>Use the temporary private code to open the dashboard.</h3>
             <p>
               The dashboard is kept intentionally simple today, with access centralized in one
               place so it can be swapped to Firebase Auth later without reshaping the content.
             </p>
             <div className="admin-access-meta" aria-label="Dashboard access details">
-              <span className="admin-access-chip">Mode: {adminAccessMode}</span>
+              <span className="admin-access-chip">
+                Mode: {adminAccessMode === 'temporary-passcode' ? 'Temporary passcode' : adminAccessMode}
+              </span>
               <span className="admin-access-chip">Session only</span>
               <span className="admin-access-chip">Mirrored data</span>
             </div>
@@ -1846,7 +1848,7 @@ function FirebaseAdminPage() {
     <PageShell
       eyebrow="Private dashboard"
       title="BrightPath activity dashboard."
-      description="A private browser session view for reviewing mirrored inquiries and site activity."
+      description="A temporary private browser session view for reviewing mirrored inquiries and site activity."
       heroLayout="minimal"
       actions={
         <>
@@ -1883,7 +1885,7 @@ function FirebaseAdminPage() {
               AC
             </div>
             <h3>Access mode</h3>
-            <p>{adminAccessMode === 'local-passcode' ? 'Local passcode' : adminAccessMode}</p>
+            <p>{adminAccessMode === 'temporary-passcode' ? 'Temporary passcode' : adminAccessMode}</p>
           </article>
           <article className="feature-card">
             <div className="feature-icon" aria-hidden="true">
