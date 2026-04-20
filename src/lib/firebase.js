@@ -15,6 +15,8 @@ const firebaseApp = getApps().length ? getApp() : initializeApp(firebaseConfig);
 
 const appCheckSiteKey = import.meta.env.VITE_FIREBASE_APPCHECK_SITE_KEY || '';
 export const adminDashboardCode = import.meta.env.VITE_ADMIN_DASHBOARD_CODE || 'brightpath-admin';
+export const adminAccessMode = import.meta.env.VITE_ADMIN_ACCESS_MODE || 'local-passcode';
+const adminSessionStorageKey = 'brightpath-admin-unlocked';
 const adminCacheKeys = {
   inquiries: 'brightpath-admin-inquiries',
   events: 'brightpath-admin-events',
@@ -60,6 +62,40 @@ function writeAdminCache(key, entries) {
   if (!storage) return;
 
   storage.setItem(key, JSON.stringify(entries.slice(0, 25)));
+}
+
+function getSessionStorage() {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
+  return window.sessionStorage;
+}
+
+export function verifyAdminCode(code) {
+  const normalized = String(code || '').trim();
+  return Boolean(normalized && normalized === adminDashboardCode);
+}
+
+export function isAdminDashboardUnlocked() {
+  const storage = getSessionStorage();
+  if (!storage) return false;
+
+  return storage.getItem(adminSessionStorageKey) === 'true';
+}
+
+export function setAdminDashboardUnlocked(isUnlocked) {
+  const storage = getSessionStorage();
+  if (!storage) return;
+
+  storage.setItem(adminSessionStorageKey, isUnlocked ? 'true' : 'false');
+}
+
+export function clearAdminDashboardUnlocked() {
+  const storage = getSessionStorage();
+  if (!storage) return;
+
+  storage.removeItem(adminSessionStorageKey);
 }
 
 export function getAdminDashboardData() {

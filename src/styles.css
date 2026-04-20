@@ -1082,6 +1082,65 @@ img {
   margin-top: 0;
 }
 
+.admin-login-panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.admin-access-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.admin-access-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(30, 136, 229, 0.08);
+  color: var(--blue);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.admin-login-form {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.admin-login-form label {
+  display: grid;
+  gap: 0.45rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.admin-login-form input {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 0.95rem 1rem;
+  font: inherit;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.95);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-login-form input:focus {
+  outline: none;
+  border-color: rgba(30, 136, 229, 0.45);
+  box-shadow: 0 0 0 4px rgba(30, 136, 229, 0.08);
+}
+
+.admin-error {
+  margin: 0;
+  color: #b33e24;
+  font-weight: 700;
+}
+
 .approach-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
