@@ -21,7 +21,13 @@ import {
   thankYouLinks,
   thankYouSteps,
 } from './content/siteContent';
-import { isFirebaseReady, saveContactInquiry, saveSiteEvent } from './lib/firebase';
+import {
+  adminDashboardCode,
+  getAdminDashboardData,
+  isFirebaseReady,
+  saveContactInquiry,
+  saveSiteEvent,
+} from './lib/firebase';
 
 const routes = [
   { path: '/', label: 'Home' },
@@ -282,6 +288,48 @@ async function trackEvent(name, details = {}) {
   } catch {
     // Tracking should never block navigation or rendering.
   }
+}
+
+function useAdminDashboard() {
+  const [data, setData] = useState(() => getAdminDashboardData());
+
+  const refresh = () => {
+    setData(getAdminDashboardData());
+  };
+
+  useEffect(() => {
+    const handleStorage = () => refresh();
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
+  }, []);
+
+  return { data, refresh };
+}
+
+function useAdminAccess() {
+  const [isUnlocked, setIsUnlocked] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.sessionStorage.getItem('brightpath-admin-unlocked') === 'true';
+  });
+
+  const unlock = (code) => {
+    const normalized = String(code || '').trim();
+    const success = normalized && normalized === adminDashboardCode;
+    if (typeof window !== 'undefined') {
+      window.sessionStorage.setItem('brightpath-admin-unlocked', success ? 'true' : 'false');
+    }
+    setIsUnlocked(success);
+    return success;
+  };
+
+  const lock = () => {
+    if (typeof window !== 'undefined') {
+      window.sessionStorage.removeItem('brightpath-admin-unlocked');
+    }
+    setIsUnlocked(false);
+  };
+
+  return { isUnlocked, unlock, lock };
 }
 
 function PageShell({
@@ -1720,14 +1768,79 @@ function ThankYouPage() {
 }
 
 function FirebaseAdminPage() {
+  const { data, refresh } = useAdminDashboard();
+  const { isUnlocked, unlock, lock } = useAdminAccess();
+  const [code, setCode] = useState('');
+
+  if (!isUnlocked) {
+    return (
+      <PageShell
+        eyebrow="Admin Access"
+        title="Enter the BrightPath admin code."
+        description="This fallback dashboard stays local to the browser and does not depend on Firebase Auth."
+        heroLayout="minimal"
+        actions={
+          <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/')}>
+            Back home
+          </button>
+        }
+      >
+        <section className="section">
+          <div className="story-panel admin-login-panel">
+            <p className="blog-label">Protected view</p>
+            <h3>Use the admin code to open the dashboard.</h3>
+            <p>
+              Firebase Auth is blocked on the current plan, so this is a lightweight fallback for
+              reviewing mirrored inquiries and tracking data from the browser.
+            </p>
+            <form
+              className="admin-login-form"
+              onSubmit={(event) => {
+                event.preventDefault();
+                unlock(code);
+              }}
+            >
+              <label>
+                Admin code
+                <input
+                  type="password"
+                  value={code}
+                  onChange={(event) => setCode(event.target.value)}
+                  placeholder="Enter the code"
+                />
+              </label>
+              <div className="hero-actions">
+                <button type="submit" className="btn btn-primary">
+                  Open dashboard
+                </button>
+                <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/')}>
+                  Back home
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </PageShell>
+    );
+  }
+
+  const recentInquiries = data.inquiries;
+  const recentEvents = data.events;
+
   return (
     <PageShell
-      eyebrow="Firebase Admin"
-      title="Firebase is connected through the browser SDK."
-      description="BrightPath now writes contact inquiries and tracking events directly to Firestore, which keeps the site deployable on Firebase Hosting without Cloud Functions."
+      eyebrow="Admin Dashboard"
+      title="Private BrightPath activity dashboard."
+      description="This fallback view shows the latest browser-mirrored inquiries and site events while Firebase Auth remains unavailable on the current plan."
       heroLayout="minimal"
       actions={
         <>
+          <button type="button" className="btn btn-primary" onClick={refresh}>
+            Refresh
+          </button>
+          <button type="button" className="btn btn-secondary" onClick={lock}>
+            Lock dashboard
+          </button>
           <button type="button" className="btn btn-secondary" onClick={() => navigateTo('/')}>
             Back home
           </button>
@@ -1755,14 +1868,14 @@ function FirebaseAdminPage() {
               CI
             </div>
             <h3>Contact inquiries</h3>
-            <p>Saved directly from the contact form.</p>
+            <p>{recentInquiries.length} mirrored entries</p>
           </article>
           <article className="feature-card">
             <div className="feature-icon" aria-hidden="true">
               EV
             </div>
             <h3>Site events</h3>
-            <p>Tracked from the browser without a server function.</p>
+            <p>{recentEvents.length} mirrored entries</p>
           </article>
         </div>
       </section>
@@ -1770,30 +1883,42 @@ function FirebaseAdminPage() {
       <section className="section section-alt">
         <div className="split-layout">
           <div className="story-panel">
-            <p className="blog-label">How it works</p>
-            <h3>What the browser writes to Firestore.</h3>
+            <p className="blog-label">Latest inquiries</p>
+            <h3>Recent contact submissions.</h3>
             <div className="schedule-list">
-              <div className="schedule-row">
-                <strong>Contact inquiries</strong>
-                <span>Parent name, child's age, email, and message are saved to `contact_inquiries`.</span>
-              </div>
-              <div className="schedule-row">
-                <strong>Site events</strong>
-                <span>Page views and lead submissions are saved to `site_events`.</span>
-              </div>
-              <div className="schedule-row">
-                <strong>Hosting friendly</strong>
-                <span>No Cloud Functions are needed for this version, so Firebase Hosting can stay on the free tier.</span>
-              </div>
+              {recentInquiries.length > 0 ? (
+                recentInquiries.map((item) => (
+                  <div key={item.id || `${item.email}-${item.submittedAt}`} className="schedule-row">
+                    <strong>{item.name || 'Unknown parent'}</strong>
+                    <span>
+                      {item.email || 'No email'} - {item.submittedAt || 'No timestamp'}
+                    </span>
+                    <span>{item.message || 'No message'}</span>
+                  </div>
+                ))
+              ) : (
+                <p>No mirrored inquiries yet. Submit the contact form to populate this area.</p>
+              )}
             </div>
           </div>
           <div className="story-panel">
-            <p className="blog-label">Security note</p>
-            <h3>Firestore rules stay locked down.</h3>
-            <p>
-              The live site only needs create access for the inquiry and tracking collections. The
-              admin-style page stays informational so visitor data is not exposed publicly.
-            </p>
+            <p className="blog-label">Latest events</p>
+            <h3>Recent page and lead tracking.</h3>
+            <div className="schedule-list">
+              {recentEvents.length > 0 ? (
+                recentEvents.map((item) => (
+                  <div key={item.id || `${item.name}-${item.timestamp}`} className="schedule-row">
+                    <strong>{item.name || 'Unknown event'}</strong>
+                    <span>
+                      {item.path || '/'} - {item.timestamp || 'No timestamp'}
+                    </span>
+                    <span>{item.label || 'No label'}</span>
+                  </div>
+                ))
+              ) : (
+                <p>No mirrored events yet. Browse the site to populate this area.</p>
+              )}
+            </div>
           </div>
         </div>
       </section>
