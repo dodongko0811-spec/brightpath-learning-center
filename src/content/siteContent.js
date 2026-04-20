@@ -33,32 +33,32 @@ export const featureCards = [
 
 export const programs = [
   {
-    title: 'Preschool',
-    description: 'A warm first school experience with early literacy, numeracy, social skills, and creative play.',
+    title: 'Math Boost',
+    description: 'Small-group support for number sense, problem solving, and confident homework habits.',
     image:
       'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80',
-    tag: 'Ages 3-5',
+    tag: 'Math',
   },
   {
-    title: 'Reading Classes',
-    description: 'Phonics, fluency, and guided reading support that helps young learners build confidence.',
+    title: 'English & Writing',
+    description: 'Reading comprehension, vocabulary, sentence building, and clear written expression.',
     image:
       'https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=900&q=80',
-    tag: 'Foundations',
+    tag: 'English',
   },
   {
-    title: 'Tutoring',
-    description: 'Focused one-on-one or small group support for homework help, foundations, and enrichment.',
+    title: 'Science Discovery',
+    description: 'Hands-on learning that makes science feel curious, practical, and exciting.',
     image:
       'https://images.unsplash.com/photo-1491013516836-7db643ee125a?auto=format&fit=crop&w=900&q=80',
-    tag: 'Custom Support',
+    tag: 'Science',
   },
   {
-    title: 'Summer Programs',
-    description: 'Engaging seasonal learning with projects, movement, reading, and hands-on discovery.',
+    title: 'Reading & Phonics',
+    description: 'A structured path for decoding, fluency, guided reading, and lasting confidence.',
     image:
       'https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=900&q=80',
-    tag: 'Seasonal',
+    tag: 'Reading',
   },
 ];
 
@@ -73,11 +73,11 @@ export const testimonials = [
     name: 'Daniel M.',
     role: 'Parent of two students',
     quote:
-      'We saw real growth in reading and confidence within a few months. The communication with parents is excellent and consistent.',
+      'We saw real growth in reading and math confidence within a few months. The communication with parents is excellent and consistent.',
   },
   {
     name: 'Alicia T.',
-    role: 'Parent of a preschooler',
+    role: 'Parent of an elementary learner',
     quote:
       'My daughter loves going every morning. The program feels structured, but still joyful and creative, which is exactly what we wanted.',
   },
@@ -116,34 +116,34 @@ export const faqs = [
 ];
 
 export const scheduleRows = [
-  { label: 'Morning circle', value: 'Welcome routines, music, and language warm-ups' },
-  { label: 'Learning block', value: 'Reading, number sense, and guided activities' },
-  { label: 'Creative play', value: 'Art, movement, projects, and social learning' },
-  { label: 'Reflection', value: 'Sharing time, progress notes, and home connection' },
+  { label: 'Warm-up', value: 'Reading review, math fluency, and confidence building' },
+  { label: 'Skill block', value: 'Guided English, science, and tutoring support' },
+  { label: 'Hands-on time', value: 'Projects, discussion, and practical problem solving' },
+  { label: 'Home connection', value: 'Progress notes, parent updates, and take-home practice' },
 ];
 
 export const spotlightItems = [
-  { icon: '📚', title: 'Early literacy', text: 'Reading, letters, and language routines' },
-  { icon: '🎨', title: 'Creative growth', text: 'Play, art, movement, and discovery' },
-  { icon: '🤝', title: 'Family support', text: 'Clear communication and trust' },
+  { icon: 'RD', title: 'Reading support', text: 'Phonics, fluency, and guided reading routines' },
+  { icon: 'MT', title: 'Math confidence', text: 'Number sense, problem solving, and practice' },
+  { icon: 'FS', title: 'Family support', text: 'Clear communication and simple next steps' },
 ];
 
 export const programHighlights = [
-  { icon: '📖', title: 'Literacy-rich', text: 'Reading routines built into the week' },
-  { icon: '🧠', title: 'Confidence-led', text: 'Support that builds skill and comfort' },
-  { icon: '🌟', title: 'Hands-on', text: 'Learning through purposeful play' },
+  { icon: 'MT', title: 'Math support', text: 'Strong number sense and practical problem solving' },
+  { icon: 'EN', title: 'English focus', text: 'Reading comprehension, writing, and vocabulary' },
+  { icon: 'SC', title: 'Science time', text: 'Hands-on discovery that keeps learning engaging' },
 ];
 
 export const aboutHighlights = [
-  { icon: '🏫', title: 'Warm classrooms', text: 'Bright spaces with calm routines' },
-  { icon: '📝', title: 'Clear progress', text: 'Families stay informed and involved' },
-  { icon: '💛', title: 'Caring culture', text: 'Every child is known and encouraged' },
+  { icon: 'CL', title: 'Warm classrooms', text: 'Bright spaces with calm routines' },
+  { icon: 'PR', title: 'Clear progress', text: 'Families stay informed and involved' },
+  { icon: 'CC', title: 'Caring culture', text: 'Every child is known and encouraged' },
 ];
 
 export const contactMethods = [
-  { icon: '📍', label: 'Visit us', value: '128 Willow Street, Suite 4, Harborview' },
-  { icon: '✉️', label: 'Email', value: 'kierjoyno@gmail.com' },
-  { icon: '📞', label: 'Call', value: '(415) 555-0137' },
+  { icon: 'LOC', label: 'Visit us', value: '128 Willow Street, Suite 4, Harborview' },
+  { icon: 'EM', label: 'Email', value: 'kierjoyno@gmail.com' },
+  { icon: 'PH', label: 'Call', value: '(415) 555-0137' },
 ];
 
 export const privacyHighlights = [
@@ -270,7 +270,7 @@ export const notFoundLinks = [
 ];
 
 export const programStats = [
-  { value: '4', label: 'Core programs' },
+  { value: '4', label: 'Core subjects' },
   { value: 'Small', label: 'Class sizes' },
   { value: 'Daily', label: 'Parent updates' },
 ];
@@ -279,14 +279,14 @@ export const staffMembers = [
   {
     name: 'Leadership Team',
     role: 'Program Director',
-    credentials: 'Early childhood curriculum and program planning',
+    credentials: 'Academic planning, family communication, and program design',
     bio: 'Leads learning design, classroom rhythm, and the overall BrightPath experience.',
   },
   {
     name: 'Literacy Team',
     role: 'Lead Reading Teacher',
-    credentials: 'Reading support and phonics foundations',
-    bio: 'Supports early literacy with guided reading, practice routines, and confidence-building instruction.',
+    credentials: 'Reading support, phonics foundations, and comprehension',
+    bio: 'Supports literacy with guided reading, practice routines, and confidence-building instruction.',
   },
   {
     name: 'Family Support Team',
@@ -298,22 +298,22 @@ export const staffMembers = [
 
 export const tuitionOptions = [
   {
-    title: 'Preschool',
+    title: 'Math Boost',
     price: 'Pricing shared after your visit',
-    note: 'We recommend the best fit after learning your child’s needs and schedule.',
+    note: 'We recommend the best fit after learning your child needs and schedule.',
   },
   {
-    title: 'Reading Classes',
+    title: 'English & Writing',
     price: 'Monthly plan available',
     note: 'Package details are shared during the admissions conversation.',
   },
   {
-    title: 'Tutoring',
+    title: 'Science Discovery',
     price: 'Custom support quote',
     note: 'Designed around one-on-one or small-group support needs.',
   },
   {
-    title: 'Summer Programs',
+    title: 'Reading & Phonics',
     price: 'Seasonal enrollment',
     note: 'Program availability and pricing are confirmed each session.',
   },

@@ -1579,6 +1579,20 @@ img {
   color: var(--muted);
 }
 
+.contact-map-card {
+  padding: 1.2rem 1.3rem;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(249, 246, 241, 0.95));
+  box-shadow: 0 18px 40px rgba(17, 26, 40, 0.08);
+  border: 1px solid rgba(199, 155, 67, 0.1);
+  display: grid;
+  gap: 0.8rem;
+}
+
+.contact-map-card .text-link-button {
+  width: fit-content;
+}
+
 .contact-methods {
   display: grid;
   gap: 0.9rem;
