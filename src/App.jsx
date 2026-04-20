@@ -6,6 +6,7 @@ import {
   featureCards,
   galleryImages,
   heroProofs,
+  outcomeCards,
   programHighlights,
   programStats,
   programs,
@@ -389,7 +390,7 @@ function HomePage() {
         <div className="hero-copy">
           <p className="eyebrow">Academic support for children who need clearer progress</p>
           <h1 className="serif-accent hero-title">
-            Helping children catch up, keep up, and feel confident in every core subject.
+            Helping children catch up, keep up, and feel confident in math, reading, writing, and science.
           </h1>
           <p className="hero-text">
             BrightPath combines small-group tutoring, steady routines, and caring teachers so
@@ -575,6 +576,27 @@ function HomePage() {
 
       <SectionDivider />
 
+      <section className="section reveal-on-scroll">
+        <SectionHeading
+          eyebrow="What changes"
+          title="The kind of progress parents hope to see."
+          description="BrightPath is built to help children feel more capable in the subjects that matter most."
+        />
+        <div className="feature-grid outcome-grid">
+          {outcomeCards.map((item, index) => (
+            <article className="feature-card outcome-card" key={item.title}>
+              <div className="feature-icon" aria-hidden="true">
+                0{index + 1}
+              </div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <SectionDivider />
+
       <section className="section section-alt reveal-on-scroll">
           <div className="split-layout">
           <div>
@@ -597,6 +619,10 @@ function HomePage() {
               <li>Friendly feedback that helps children keep moving forward</li>
               <li>Simple parent updates so families always know what is happening</li>
             </ul>
+            <div className="callout-note">
+              <strong>Our promise:</strong>
+              <span>We keep learning personal, calm, and focused on steady gains.</span>
+            </div>
             <div className="mini-link-row">
               <button type="button" className="text-link-button" onClick={() => navigateTo('/about')}>
                 Learn more about our approach
@@ -939,8 +965,8 @@ function AboutPage() {
           <div>
             <SectionHeading
               eyebrow="Our story"
-              title="A simple idea: children learn best when they feel known and supported."
-              description="BrightPath started with the belief that education should be warm, structured, and personal."
+              title="A simple idea: children learn best when they feel known, supported, and capable."
+              description="BrightPath started with the belief that tutoring should feel warm, structured, and personally encouraging."
             />
             <div className="about-image-card">
               <img
@@ -957,6 +983,10 @@ function AboutPage() {
               </p>
               <p>
                 Parents trust us because we keep communication clear and routines dependable.
+              </p>
+              <p>
+                Our team teaches with patience, clear steps, and a steady rhythm that helps children
+                feel successful early and often.
               </p>
               <div className="story-panel-actions">
                 <button type="button" className="btn btn-primary" onClick={() => navigateTo('/contact')}>

@@ -46,6 +46,21 @@ export const heroProofs = [
   },
 ];
 
+export const outcomeCards = [
+  {
+    title: 'More confidence in core subjects',
+    text: 'Children get targeted support in the places where they feel most unsure.',
+  },
+  {
+    title: 'Clearer homework routines',
+    text: 'Families leave with simpler practice habits that are easier to keep up at home.',
+  },
+  {
+    title: 'Visible academic momentum',
+    text: 'Small wins stack up into better participation, stronger focus, and steadier progress.',
+  },
+];
+
 export const programs = [
   {
     title: 'Math Boost',
